@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/drawable-v21/ic_expand_more_white_22.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/drawable-v21/ic_expand_more_white_22.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/drawable-v21/ic_cc_checkmark.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/drawable-v21/ic_cc_checkmark.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/drawable-v21/generic_confirmation.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/drawable-v21/generic_confirmation.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/drawable-v21/accept_deny_dialog_positive_bg.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/drawable-v21/accept_deny_dialog_positive_bg.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/drawable-v21/open_on_phone.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/drawable-v21/open_on_phone.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/drawable-v21/ic_cc_clear.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/drawable-v21/ic_cc_clear.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/drawable-v21/open_on_phone_animation.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/drawable-v21/open_on_phone_animation.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/drawable-v21/accept_deny_dialog_negative_bg.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/drawable-v21/accept_deny_dialog_negative_bg.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/drawable-v21/preference_wrapped_icon.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/drawable-v21/preference_wrapped_icon.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/drawable-v21/generic_confirmation_animation.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/drawable-v21/generic_confirmation_animation.xml"
+    }
+]

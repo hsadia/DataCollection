@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/4e781377da9901c9fb1befe7d9727623cf2f945e/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="dd1d0d84da2cff18f741c63a9c3af7d9aa89fdd6">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_c6e4ebecd6b2cf2ae883f2f5a9cb054849913443.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/02bf0cd4dd975051c5420fe108e883cae9322060/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="1108575c7dc7b7f5b378b3290ac90de81a9b8830">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/pre-dexed/debug/classes_26447b6ec4e3469bed1790fa5c363b739a5f4e7e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/b2808ba26056f936ef15dcfffebc25403c025613/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="1b95f2bf44857a158b097e9f80d5d18d69f32584">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_891cb7d0356d2bd9e89aecc2acb83cdd89268e1a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="82ee2b306014da82147b5b2f1881bf1260c1e2a9">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_5a7ae9ff09f284820632d6b68270ea7b316bb20e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/b839249bb406fae2840f5ecdb7a6c8ab99b90863/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/pre-dexed/debug/classes_23fde665159d5fb3d35aa638e9e2d244c34c6025.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/82c7cbd665605adb7e6db1239cb07f771f589e53/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_9831e9b3edd1613c28d5f40a3c632f1244a51e32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/36ec12c4c5f1c167b0d174b54c41f34549b7f396/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8531f2d46b35de75e6130f25830e0c2c0d6bb98c">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_444bb392952e5111ae7d39f460d04573e3c537ad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/1636ffdd09bc393ee612292bcdbe26dfa423caa7/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_b41c800fd053518765063fc2bb09cfedcfb5883b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/support-annotations-25.3.1_31651fe620e9821d6b7d758567bdf978dfd25cfa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/39e8282c3f4dd45545484e2033da9409749e1db9/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_5d44cf6313ad78c4609759821b964a143f2bd423.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/cbbe5b46f43139909b51c73372d0186253421717/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_42a2aaa29a44286c100761101f0dea06067244ce.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/0fe66af4394218dd45090b050a84b3a108416b2b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/pre-dexed/debug/classes_a9481b61d4d24689791992d3ad44e38c7e53834f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/a4985e240a58f52b33c00a80d8e9d42840365c4a/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5803db663655ef5cb38c6bcb17ba326fdb9edfbd">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_ce1d92b33140a5dba5fc04964ccbab3a827c2595.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/0cec65e322c089654e1a0860d58655f2548c7942/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9ed08fab37c3a572da1d9ed2bf2e36c8d3e2bc48">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_b6a378659843e1b219cb3465e531c884f79825f6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/e486e06157e802546d123cbc6c29e08995327a69/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_aaa0ae3a4076d2ca9f055d1a857c0fed033d6d1f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/pre-dexed/debug/classes_b9e03100f66f4da66201ff285fa392ec05936801.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Haleema/.android/build-cache/61e533bcf5a28657027f455b8cfacc93ba87da2b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/pre-dexed/debug/classes_2465db3369d8ef7faf910eb10308796621731302.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,4 @@
+#Wed May 31 18:45:54 EDT 2017
+base.0=/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

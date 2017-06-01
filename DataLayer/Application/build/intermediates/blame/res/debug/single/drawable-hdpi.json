@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/drawable-hdpi/tile.9.png",
+        "source": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/src/main/res/drawable-hdpi/tile.9.png"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png",
+        "source": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/drawable-hdpi/ic_content_picture.png",
+        "source": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/src/main/res/drawable-hdpi/ic_content_picture.png"
+    }
+]

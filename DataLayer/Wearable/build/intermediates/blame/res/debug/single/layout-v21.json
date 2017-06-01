@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/layout-v21/overlay_confirmation.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/layout-v21/overlay_confirmation.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/layout-v21/accept_deny_dialog.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/layout-v21/accept_deny_dialog.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Wearable/build/intermediates/res/merged/debug/layout-v21/dismiss_overlay.xml",
+        "source": "/Users/Haleema/.android/build-cache/d18104851dddaca8c409174625db6fb8689b5503/output/res/layout-v21/dismiss_overlay.xml"
+    }
+]

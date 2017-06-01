@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 55,
+                    "endOffset": 106
+                },
+                "from": {
+                    "file": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/values-port/values-port.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 55,
+                        "endOffset": 106
+                    }
+                }
+            }
+        ]
+    }
+]

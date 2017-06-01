@@ -1,0 +1,90 @@
+[
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_dark.xml",
+        "source": "/Users/Haleema/.android/build-cache/4e781377da9901c9fb1befe7d9727623cf2f945e/output/res/color/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/common_google_signin_btn_tint.xml",
+        "source": "/Users/Haleema/.android/build-cache/4e781377da9901c9fb1befe7d9727623cf2f945e/output/res/color/common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_search_url_text.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_tint_default.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_light.xml",
+        "source": "/Users/Haleema/.android/build-cache/4e781377da9901c9fb1befe7d9727623cf2f945e/output/res/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/Haleema/.android/build-cache/209ed7288283c45a6653f091f5d2682cadea27c5/output/res/color/abc_btn_colored_borderless_text_material.xml"
+    }
+]

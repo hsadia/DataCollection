@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/drawable-xhdpi/ic_content_picture.png",
+        "source": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/src/main/res/drawable-xhdpi/ic_content_picture.png"
+    },
+    {
+        "merged": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher.png",
+        "source": "/Users/Haleema/AndroidStudioProjects/DataLayer/Application/src/main/res/drawable-xhdpi/ic_launcher.png"
+    }
+]
