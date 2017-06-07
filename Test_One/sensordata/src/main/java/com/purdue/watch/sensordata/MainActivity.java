@@ -9,6 +9,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,7 +33,8 @@ public class MainActivity extends Activity implements SensorEventListener{
     private List<String> AccList, GyroList, MagList, LinearList, GravList;
 
     private boolean collect = false;
-
+    private int collectionCount = 1000;
+    private int currentCount = 0;
     private float ax,ay,az;
     private float gx,gy,gz;
     private float mx,my,mz;
@@ -44,7 +47,7 @@ public class MainActivity extends Activity implements SensorEventListener{
     String folderName = "Data";
     String sDate = "";
     public Date startDate;
-    private boolean shouldKeepData = false;
+    private boolean shouldKeepData = true;
     FileStreamManager fileStreamManager = new FileStreamManager();
     private GoogleApiClient mGoogleApiClient;
 
@@ -53,11 +56,29 @@ public class MainActivity extends Activity implements SensorEventListener{
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        requestPermission();
         setTextView();
         setButtonListeners();
         registerSensors();
 
+    }
+
+    private void requestPermission() {
+        int requestCode = 1;
+        int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE);
+        Log.d("Permission Check READ", "Result: " + permissionCheck);
+        if(permissionCheck == PackageManager.PERMISSION_DENIED) {// PERMISSION_GRANTED is 0
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, requestCode);
+        }
+        permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        Log.d("Permission Check WRITE", "Result: " + permissionCheck);
+        if(permissionCheck == PackageManager.PERMISSION_DENIED) {// PERMISSION_GRANTED is 0
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, requestCode);
+        }
     }
 
     private void setTextView() {
@@ -84,22 +105,6 @@ public class MainActivity extends Activity implements SensorEventListener{
             public void onClick(View v) {
                 collect = false;
                 Log.d("Stop & Save", "collect = false");
-
-                int requestCode = 1;
-                int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(),
-                        Manifest.permission.READ_EXTERNAL_STORAGE);
-                Log.d("Permission Check READ", "Result: " + permissionCheck);
-                if(permissionCheck == PackageManager.PERMISSION_DENIED) {// PERMISSION_GRANTED is 0
-                    ActivityCompat.requestPermissions(MainActivity.this,
-                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, requestCode);
-                }
-                permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(),
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                Log.d("Permission Check WRITE", "Result: " + permissionCheck);
-                if(permissionCheck == PackageManager.PERMISSION_DENIED) {// PERMISSION_GRANTED is 0
-                    ActivityCompat.requestPermissions(MainActivity.this,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, requestCode);
-                }
                 savedata();
                 try {
                     fileStreamManager.ReadDir();
@@ -113,9 +118,8 @@ public class MainActivity extends Activity implements SensorEventListener{
         exit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 Log.d("Exit", "Bye Bye!");
-
                 if(shouldKeepData==false)
-                    fileStreamManager.deleteFolder(folderName, sDate);
+                    fileStreamManager.DeleteFiles(folderName, sDate);
                 onStop();
                 android.os.Process.killProcess(android.os.Process.myPid());
             }
@@ -129,33 +133,49 @@ public class MainActivity extends Activity implements SensorEventListener{
 
         SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS");
         sDate = sDateFormat.format(startDate);
+        //**********Creating File Path*********//
+        File SDFile     = Environment.getExternalStorageDirectory();
+        String path     = SDFile.getAbsolutePath();
+        String path_one = path       + File.separator + folderName;
+        String path_two = path_one   + File.separator + sDate;
+        String myFile   = path_two   + File.separator;
 
-        Context context = getApplicationContext();
-        boolean result = fileStreamManager.OutputList( "acc.txt",AccList, folderName, sDate, context);
-        AccList.clear();
-        if(result)
-            Log.d("savedata","saved accelerometer file");
+        //**Creating File**//
+        boolean check = fileStreamManager.CreateFile("acc.txt",folderName, sDate);
+       //**Writing to File**//
+        boolean result= fileStreamManager.WriteList( myFile +"acc.txt", check, AccList);
+        if(result) {
+            AccList.clear();
+            Log.d("savedata", "saved accelerometer file");
+        }
 
-        result = fileStreamManager.OutputList("gyro.txt",GyroList, folderName, sDate, context);
-        GyroList.clear();
-        if(result)
-            Log.d("savedata","saved gyrometer file");
+        check = fileStreamManager.CreateFile("gyro.txt",folderName, sDate);
+        result = fileStreamManager.WriteList(myFile + "gyro.txt", check, GyroList);
+        if(result) {
+            GyroList.clear();
+            Log.d("savedata", "saved gyrometer file");
+        }
 
-        result = fileStreamManager.OutputList("mag.txt",MagList, folderName, sDate, context);
-        MagList.clear();
-        if(result)
-             Log.d("savedata","saved magnetometer file");
+        check = fileStreamManager.CreateFile("mag.txt",folderName, sDate);
+        result = fileStreamManager.WriteList(myFile + "mag.txt",check, MagList);
+        if(result) {
+            MagList.clear();
+            Log.d("savedata", "saved magnetometer file");
+        }
 
+        check = fileStreamManager.CreateFile("linearAcc.txt",folderName, sDate);
+        result = fileStreamManager.WriteList(myFile + "linearAcc.txt",check, LinearList);
+        if(result) {
+            LinearList.clear();
+            Log.d("savedata", "saved linear accelerometer file");
+        }
 
-        result = fileStreamManager.OutputList("linearAcc.txt",LinearList, folderName, sDate, context);
-        LinearList.clear();
-        if(result)
-            Log.d("savedata","saved linear accelerometer file");
-
-        result = fileStreamManager.OutputList("grav.txt",GravList, folderName, sDate, context);
-        GravList.clear();
-        if(result)
-            Log.d("savedata","saved gravity file");
+        check = fileStreamManager.CreateFile("grav.txt",folderName, sDate);
+        result = fileStreamManager.WriteList(myFile + "grav.txt",check, GravList);
+        if(result) {
+            GravList.clear();
+            Log.d("savedata", "saved gravity file");
+        }
 
     }
 
@@ -260,8 +280,14 @@ public class MainActivity extends Activity implements SensorEventListener{
                     ax = event.values[0];
                     ay = event.values[1];
                     az = event.values[2];
-                    if (collect)
-                        AccList.add(second+";"+ax+";"+ay+";"+az);
+                    if (collect) {
+                        AccList.add(second + ";" + ax + ";" + ay + ";" + az);
+                        currentCount++;
+                        if (currentCount > collectionCount) {
+                            savedata();
+                            currentCount = 0;
+                        }
+                    }
                     break;
                 case Sensor.TYPE_GYROSCOPE:
                     GyroTextView.setText("Gyroscope \nx:"+Float.toString(event.values[0]) +
@@ -309,5 +335,5 @@ public class MainActivity extends Activity implements SensorEventListener{
         return;
 
     }
-    
+
 }

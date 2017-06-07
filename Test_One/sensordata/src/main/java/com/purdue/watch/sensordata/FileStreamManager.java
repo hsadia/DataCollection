@@ -4,7 +4,6 @@ package com.purdue.watch.sensordata;
  * Created by Haleema on 01/06/2017.
  */
 
-import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class FileStreamManager {
 
-    public void deleteFolder(String folderName, String sDate) {
+    public void DeleteFiles(String folderName, String sDate) {
         File SDFile = android.os.Environment.getExternalStorageDirectory();
         File destDir = new File(SDFile.getAbsolutePath() + "/"+folderName+"/"
                 + sDate);
@@ -39,17 +38,11 @@ public class FileStreamManager {
         Log.d("Delete Folder", "Deleted!");
     }
 
-    public boolean OutputList(String filename, List<String> content, String folderName, String sDate, Context c)
-    {
-        // ... creating file in external storage
-
+    public boolean CreateFile(String filename, String folderName, String sDate){
         File SDFile     = Environment.getExternalStorageDirectory();
         String path     = SDFile.getAbsolutePath();
         String path_one = path       + File.separator + folderName;
         String path_two = path_one   + File.separator + sDate;
-        String myFile   = path_two   + File.separator + filename;
-
-        boolean check = false;
         File folder, date_folder, file;
 
         try {
@@ -69,18 +62,24 @@ public class FileStreamManager {
                 date_folder.mkdirs();
                 Log.d("Created Folder", date_folder.getName());
             }
+
             file = new File(path_one+"/"+filename);
-            file.createNewFile();
-            Log.d("Created File", file.getName());
+            if (!file.exists()) {
+                file.createNewFile();
+                Log.d("Created File", file.getName());
+            }
         }catch (Exception e){
             Log.e("Create File", e.getMessage());
             return false;
         }
+        return true;
+    }
 
-        //...if able to create file, write in it
-        if(!check) {
+    public boolean WriteList(String myFile, Boolean check, List<String> content)
+    {
+
+        if(check) {//...if able to create file, write in it
             try {
-
                 FileWriter fstream = new FileWriter(myFile);
                 BufferedWriter out = new BufferedWriter(fstream);
 
@@ -98,12 +97,12 @@ public class FileStreamManager {
                 return false;
             }
       }
+      else
+          return false;
         return true;
     }
 
     public void ReadDir(){
-
-
         File SDFile = android.os.Environment.getExternalStorageDirectory();
         String path = SDFile.getAbsolutePath().toString()+"/Data";
         Log.d("Files", "Path: " + path);
