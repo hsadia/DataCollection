@@ -1,16 +1,22 @@
 package com.purdue.watch.sensordata;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,15 +26,17 @@ import java.util.List;
 public class MainActivity extends Activity implements SensorEventListener{
 
     private TextView GyroTextView, AccTextView, MagTextView;
-    private SensorManager SensorManager;
-    private Sensor GyroSensor, AccSensor, MagSensor;
-    private List<String> AccList, GyroList, MagList;
+    protected SensorManager SensorManager;
+    protected Sensor GyroSensor, AccSensor, MagSensor, LinearSensor, GravSensor;
+    private List<String> AccList, GyroList, MagList, LinearList, GravList;
 
     private boolean collect = false;
 
     private float ax,ay,az;
     private float gx,gy,gz;
     private float mx,my,mz;
+    private float linearAccX, linearAccY, linearAccZ;
+    private float grx,gry,grz;
     private float second;
 
     private boolean justStart = true;
@@ -36,12 +44,16 @@ public class MainActivity extends Activity implements SensorEventListener{
     String folderName = "Data";
     String sDate = "";
     public Date startDate;
+    private boolean shouldKeepData = false;
+    FileStreamManager fileStreamManager = new FileStreamManager();
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         setTextView();
         setButtonListeners();
         registerSensors();
@@ -63,7 +75,7 @@ public class MainActivity extends Activity implements SensorEventListener{
             public void onClick(View v) {
                 collect = true;
                 justStart = true;
-                Log.d("button", "collect = true");
+                Log.d("Start", "collect = true");
             }
         });
 
@@ -71,58 +83,120 @@ public class MainActivity extends Activity implements SensorEventListener{
         stop.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 collect = false;
-                Log.d("button", "collect = false");
+                Log.d("Stop & Save", "collect = false");
+
+                int requestCode = 1;
+                int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(),
+                        Manifest.permission.READ_EXTERNAL_STORAGE);
+                Log.d("Permission Check READ", "Result: " + permissionCheck);
+                if(permissionCheck == PackageManager.PERMISSION_DENIED) {// PERMISSION_GRANTED is 0
+                    ActivityCompat.requestPermissions(MainActivity.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, requestCode);
+                }
+                permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(),
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                Log.d("Permission Check WRITE", "Result: " + permissionCheck);
+                if(permissionCheck == PackageManager.PERMISSION_DENIED) {// PERMISSION_GRANTED is 0
+                    ActivityCompat.requestPermissions(MainActivity.this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, requestCode);
+                }
                 savedata();
+                try {
+                    fileStreamManager.ReadDir();
+                } catch (Exception e) {
+                    Log.e("Exception", e.getMessage());
+                }
+            }
+        });
+
+        final Button exit = (Button) findViewById(R.id.exit);
+        exit.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Log.d("Exit", "Bye Bye!");
+
+                if(shouldKeepData==false)
+                    fileStreamManager.deleteFolder(folderName, sDate);
+                onStop();
+                android.os.Process.killProcess(android.os.Process.myPid());
             }
         });
 
     }
 
+
+
     private void savedata() {
 
         SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss-SSS");
         sDate = sDateFormat.format(startDate);
-        FileStreamManager fileStreamManager = new FileStreamManager();
 
-        fileStreamManager.OutputList("/"+folderName+"/" + sDate + "/acc.txt",AccList);
+        Context context = getApplicationContext();
+        boolean result = fileStreamManager.OutputList( "acc.txt",AccList, folderName, sDate, context);
         AccList.clear();
-        Log.d("savefile","saved accelerometer file");
+        if(result)
+            Log.d("savedata","saved accelerometer file");
 
-        fileStreamManager.OutputList("/"+folderName+"/" + sDate + "/gyro.txt",GyroList);
+        result = fileStreamManager.OutputList("gyro.txt",GyroList, folderName, sDate, context);
         GyroList.clear();
-        Log.d("savefile","saved gyrometer file");
+        if(result)
+            Log.d("savedata","saved gyrometer file");
 
-        fileStreamManager.OutputList("/"+folderName+"/" + sDate + "/mag.txt",MagList);
+        result = fileStreamManager.OutputList("mag.txt",MagList, folderName, sDate, context);
         MagList.clear();
-        Log.d("savefile","save magnetometer file");
+        if(result)
+             Log.d("savedata","saved magnetometer file");
+
+
+        result = fileStreamManager.OutputList("linearAcc.txt",LinearList, folderName, sDate, context);
+        LinearList.clear();
+        if(result)
+            Log.d("savedata","saved linear accelerometer file");
+
+        result = fileStreamManager.OutputList("grav.txt",GravList, folderName, sDate, context);
+        GravList.clear();
+        if(result)
+            Log.d("savedata","saved gravity file");
 
     }
 
 
     private void registerSensors() {
 
-        second = ax = ay = az = gx = gy = gz = mx = my = mz = 0;
+        second = ax = ay = az = gx = gy = gz = mx = my = mz = linearAccX = linearAccY = linearAccZ = grx= gry = grz = 0;
         SensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         GyroSensor = null;
         if (SensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE) != null) {
             GyroSensor = SensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
             SensorManager.registerListener(this,
-                    GyroSensor, SensorManager.SENSOR_DELAY_NORMAL);
+                    GyroSensor, SensorManager.SENSOR_DELAY_FASTEST);
             GyroList = new ArrayList<String>();
         }
 
         if (SensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
             AccSensor = SensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             SensorManager.registerListener(this,
-                    AccSensor, SensorManager.SENSOR_DELAY_NORMAL);
+                    AccSensor, SensorManager.SENSOR_DELAY_FASTEST);
             AccList = new ArrayList<String>();
         }
 
         if (SensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null) {
             MagSensor = SensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
             SensorManager.registerListener(this,
-                    MagSensor, SensorManager.SENSOR_DELAY_NORMAL);
+                    MagSensor, SensorManager.SENSOR_DELAY_FASTEST);
             MagList = new ArrayList<String>();
+        }
+        if (SensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY) != null){
+            GravSensor = SensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
+            SensorManager.registerListener(this,
+                   GravSensor, SensorManager.SENSOR_DELAY_FASTEST);
+            GravList = new ArrayList<String>();
+        }
+        if (SensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION) != null){
+            LinearSensor = SensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
+            SensorManager.registerListener(this,
+                    LinearSensor, SensorManager.SENSOR_DELAY_FASTEST);
+            LinearList = new ArrayList<String>();
+
         }
     }
 
@@ -133,6 +207,8 @@ public class MainActivity extends Activity implements SensorEventListener{
         SensorManager.unregisterListener(this, AccSensor);
         SensorManager.unregisterListener(this, GyroSensor);
         SensorManager.unregisterListener(this, MagSensor);
+        SensorManager.unregisterListener(this, GravSensor);
+        SensorManager.unregisterListener(this, LinearSensor);
 
     }
 
@@ -141,12 +217,15 @@ public class MainActivity extends Activity implements SensorEventListener{
 
         super.onResume();
         SensorManager.registerListener(this,
-                GyroSensor, SensorManager.SENSOR_DELAY_NORMAL);
+                GyroSensor, SensorManager.SENSOR_DELAY_FASTEST);
         SensorManager.registerListener(this,
-                AccSensor, SensorManager.SENSOR_DELAY_NORMAL);
+                AccSensor, SensorManager.SENSOR_DELAY_FASTEST);
         SensorManager.registerListener(this,
-                MagSensor, SensorManager.SENSOR_DELAY_NORMAL);
-
+                MagSensor, SensorManager.SENSOR_DELAY_FASTEST);
+        SensorManager.registerListener(this,
+                GravSensor, SensorManager.SENSOR_DELAY_FASTEST);
+        SensorManager.registerListener(this,
+                LinearSensor, SensorManager.SENSOR_DELAY_FASTEST);
 
     }
 
@@ -157,11 +236,9 @@ public class MainActivity extends Activity implements SensorEventListener{
         SensorManager.unregisterListener(this, AccSensor);
         SensorManager.unregisterListener(this, GyroSensor);
         SensorManager.unregisterListener(this, MagSensor);
-
+        SensorManager.unregisterListener(this, GravSensor);
+        SensorManager.unregisterListener(this, LinearSensor);
     }
-
-
-
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -174,7 +251,7 @@ public class MainActivity extends Activity implements SensorEventListener{
         }
         second = (float) ((time - startTick) / 1000000000.0);
 
-        synchronized (this) {
+       // synchronized (this) {
             switch (event.sensor.getType()){
                 case Sensor.TYPE_ACCELEROMETER:
                     AccTextView.setText("Accelerometer \nx:"+Float.toString(event.values[0]) +
@@ -206,8 +283,23 @@ public class MainActivity extends Activity implements SensorEventListener{
                     if (collect)
                         MagList.add(second+";"+mx+";"+my+";"+mz);
                     break;
+                case Sensor.TYPE_LINEAR_ACCELERATION:
+                    linearAccX = event.values[0];
+                    linearAccY = event.values[1];
+                    linearAccZ = event.values[2];
+                    if (collect)
+                        LinearList.add(second+";"+linearAccX+";"+linearAccY+";"+linearAccZ);
+                    break;
+                case Sensor.TYPE_GRAVITY:
+                    grx = event.values[0];
+                    gry = event.values[1];
+                    grz = event.values[2];
+                    if(collect)
+                        GravList.add(second+";"+grx+";"+gry+";"+grz);
+                    break;
+
             }
-        }
+     //   }
 
     }
 
@@ -217,7 +309,5 @@ public class MainActivity extends Activity implements SensorEventListener{
         return;
 
     }
-
-
-
+    
 }

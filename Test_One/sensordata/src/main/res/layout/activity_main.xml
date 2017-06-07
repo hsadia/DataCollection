@@ -9,6 +9,11 @@
     app:roundLayout="@layout/round_activity_main"
     tools:context="com.purdue.watch.sensordata.MainActivity"
     tools:deviceIds="wear">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        >
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -38,13 +43,19 @@
         android:id="@+id/start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Start Collecting" />
 
     <Button
         android:id="@+id/stop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Stop And Save" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exit" />
+
+</LinearLayout></ScrollView>
 </android.support.wearable.view.WatchViewStub>
