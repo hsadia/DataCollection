@@ -3,10 +3,41 @@
 // found in the LICENSE file.
 
 var tabId = parseInt(window.location.search.substring(1));
+var startTime = Math.round(+new Date()/1000);
+var list = "";
+function myfunc(){
+ var name = startTime+'log.txt';
+ window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+ window.requestFileSystem(window.TEMPORARY, 1024*1024, function(fs) {
+    fs.root.getFile(name, {create: true}, function(fileEntry) { // test.bin is filename
+        fileEntry.createWriter(function(fileWriter) {
+           
+
+            fileWriter.addEventListener("writeend", function() {
+                // navigate to file, will download
+                location.href = fileEntry.toURL();
+            }, false);
+
+              fileWriter.onerror = function(e) {
+                console.log('Write failed: ' + e.toString());
+              };
+
+            // Create a new Blob and write it to log.txt.
+            var blob = new Blob([list], {type: 'text/plain'});
+            fileWriter.write(blob);
+        }, function() {});
+    }, function() {});
+}, function() {});
+}
+
 
 window.addEventListener("load", function() {
   chrome.debugger.sendCommand({tabId:tabId}, "Network.enable");
   chrome.debugger.onEvent.addListener(onEvent);
+  var x = document.getElementById("cbutton");
+  x.addEventListener("click", clearFunction);
+  var y = document.getElementById("sbutton");
+  y.addEventListener("click", myfunc);
 });
 
 window.addEventListener("unload", function() {
@@ -46,20 +77,18 @@ function onEvent(debuggeeId, message, params) {
   if (message == "Network.requestWillBeSent") {
     var requestDiv = requests[params.requestId];
     if (!requestDiv) {
-      var requestDiv = document.createElement("div");
-      requestDiv.className = "request";
-      requests[params.requestId] = requestDiv;
-      var urlLine = document.createElement("div");
       var req = {};
-      req = parserURL(params.request.url);
-
-      urlLine.textContent = "Search Path - " + getParameterByName('q',req.search);
-      requestDiv.appendChild(urlLine);
+      req = parserURL(params.request.url); 
+      keyword = getParameterByName('q',req.search);
+      if(keyword){
+        var unix = Math.round(+new Date()/1000);
+        CreateRow(keyword, unix);
+      }
     }
-
-    document.getElementById("container").appendChild(requestDiv);
   }
 }
+
+
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -71,11 +100,20 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-function CreateTable() {
-    var table = document.createElement("TABLE");
-    //var table = document.getElementById("");
-    var header = table.createTHead();
-    var row = header.insertRow(0);
+function CreateRow(keyword, time) {
+    list += time+  ";" + keyword + "\n";
+    var table = document.getElementById("TABLE");
+    var row = table.insertRow(1);
     var cell = row.insertCell(0);
-    cell.innerHTML = "<b>This is a table header</b>";
+    var cell_two = row.insertCell(1);
+    cell.innerHTML = keyword;
+    cell_two.innerHTML = time-startTime;
+}
+
+function clearFunction(){
+ var myTable = document.getElementById("TABLE");
+ var rowCount = myTable.rows.length;
+ for (var x=rowCount-1; x>0; x--) {
+    myTable.deleteRow(x);
+ }
 }
